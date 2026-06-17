@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Product Catalogue{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-4">
+    <h1 class="mb-4">Product Catalogue</h1>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <input id="catalogueSearch" class="form-control" placeholder="Search SKU, name or barcode">
+        </div>
+        <div class="col-md-2">
+            <select id="catalogueCategory" class="form-select">
+                <option value="">All Categories</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input id="catalogueMinPrice" type="number" class="form-control" placeholder="Min price">
+        </div>
+        <div class="col-md-2">
+            <input id="catalogueMaxPrice" type="number" class="form-control" placeholder="Max price">
+        </div>
+        <div class="col-md-2">
+            <select id="catalogueStock" class="form-select">
+                <option value="false" selected>All stock</option>
+                <option value="true">In stock only</option>
+            </select>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-primary w-100" onclick="loadCatalogue()">Search</button>
+        </div>
+    </div>
+
+    <div id="catalogueResults" class="row gy-4">
+        <!-- Product cards go here -->
+    </div>
+
+    <div id="catalogueEmpty" class="alert alert-info mt-4" style="display:none;">
+        No catalogue items found. Adjust filters or add products.
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/catalogue.js') }}"></script>
+{% endblock %}

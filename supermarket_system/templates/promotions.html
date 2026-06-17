@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Promotions{% endblock %}
+
+{% block content %}
+<div class="container p-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Promotions</h1>
+        <button class="btn btn-primary" onclick="openPromoModal()">Add Promotion</button>
+    </div>
+
+    <div id="promoAlert"></div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Value</th>
+                <th>Min Purchase</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="promosTableBody"></tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="promoModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Promotion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="promoForm">
+          <input type="hidden" id="promoId">
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input id="promoName" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea id="promoDescription" class="form-control" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Discount Type</label>
+            <select id="promoDiscountType" class="form-select">
+              <option value="PERCENT">Percent (%)</option>
+              <option value="AMOUNT">Amount ($)</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Discount Value</label>
+            <input id="promoDiscountValue" type="number" class="form-control" step="0.01" min="0" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Minimum Purchase</label>
+            <input id="promoMinPurchase" type="number" class="form-control" step="0.01" min="0" value="0">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Maximum Discount</label>
+            <input id="promoMaxDiscount" type="number" class="form-control" step="0.01" min="0">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Start Date</label>
+            <input id="promoStartDate" type="datetime-local" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">End Date</label>
+            <input id="promoEndDate" type="datetime-local" class="form-control" required>
+          </div>
+          <div class="form-check">
+            <input id="promoActive" type="checkbox" class="form-check-input" checked>
+            <label class="form-check-label" for="promoActive">Active</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" onclick="savePromotion()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/promotions.js') }}"></script>
+{% endblock %}

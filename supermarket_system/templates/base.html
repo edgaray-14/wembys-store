@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEMBY'S STORE</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="wemby-header">
+        <div class="brand">
+            <i class="fas fa-shopping-cart"></i> WEMBY'S STORE
+        </div>
+        <nav class="wemby-nav">
+            <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="/inventory/" class="nav-link"><i class="fas fa-boxes"></i> Inventory</a>
+            <a href="/billing/" class="nav-link"><i class="fas fa-cash-register"></i> Billing</a>
+            <a href="/catalogue/" class="nav-link"><i class="fas fa-list"></i> Catalogue</a>
+            <a href="/employees/" class="nav-link"><i class="fas fa-users"></i> Employees</a>
+            <a href="/promotions/" class="nav-link"><i class="fas fa-tag"></i> Promotions</a>
+        </nav>
+        <div class="header-contact">
+            <a href="mailto:wembystore14@gmail.com" class="contact-link">
+                <i class="fas fa-envelope"></i> wembystore14@gmail.com
+            </a>
+        </div>
+    </header>
+    <main class="wemby-main">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="wemby-footer">
+        <div class="footer-content">
+            <p><i class="fas fa-store"></i> WEMBY'S STORE - Your One Stop Shop</p>
+            <p><a href="mailto:wembystore14@gmail.com" class="footer-email"><i class="fas fa-envelope"></i> wembystore14@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

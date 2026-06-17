@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Receipt {{ transaction.invoice_number }}{% endblock %}
+
+{% block content %}
+<div class="receipt-container p-4">
+    <h2>Supermarket POS</h2>
+    <p>Invoice: {{ transaction.invoice_number }}</p>
+    <p>Date: {{ transaction.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+    <p>Customer: {{ transaction.customer_name or 'Walk-in' }}</p>
+    <p>Cashier ID: {{ transaction.cashier_id or 'N/A' }}</p>
+
+    <table class="table table-sm">
+        <thead>
+            <tr><th>SKU</th><th>Product</th><th>Qty</th><th>Unit</th><th>Total</th></tr>
+        </thead>
+        <tbody>
+        {% for item in transaction.items %}
+            <tr>
+                <td>{{ item.sku }}</td>
+                <td>{{ item.product_name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.unit_price }}</td>
+                <td>{{ item.line_total }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="summary">
+        <p>Subtotal: {{ transaction.subtotal }}</p>
+        <p>Discount: {{ transaction.discount_amount }}</p>
+        <p>Tax: {{ transaction.tax_amount }}</p>
+        <p><strong>Total: {{ transaction.total_amount }}</strong></p>
+        <p>Paid: {{ transaction.paid_amount }}</p>
+        <p>Change: {{ transaction.change_amount }}</p>
+        <p>Payment method: {{ transaction.payment_method }}</p>
+        {% if transaction.promo_code %}<p>Promo code: {{ transaction.promo_code }}</p>{% endif %}
+    </div>
+</div>
+{% endblock %}

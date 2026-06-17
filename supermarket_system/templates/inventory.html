@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Inventory Management{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Inventory Management</h1>
+        <button class="btn btn-primary" onclick="openProductModal()">Add Product</button>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search products..." onkeyup="loadProducts()">
+        </div>
+        <div class="col-md-6">
+            <select id="categoryFilter" class="form-select" onchange="loadProducts()">
+                <option value="">-- All Categories --</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="inventoryAlert"></div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>SKU</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price (UGX)</th>
+                    <th>Quantity</th>
+                    <th>Min Stock</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="productsTableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="productModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="productForm">
+          <input type="hidden" id="productId">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">SKU</label>
+              <input id="productSku" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Name</label>
+              <input id="productName" class="form-control" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Category</label>
+              <input id="productCategory" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Price (UGX)</label>
+              <input id="productPrice" type="number" class="form-control" step="0.01" min="0" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Quantity</label>
+              <input id="productQuantity" type="number" class="form-control" min="0" value="0">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Minimum Stock</label>
+              <input id="productMinStock" type="number" class="form-control" min="0" value="10">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Supplier</label>
+            <input id="productSupplier" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea id="productDescription" class="form-control" rows="3"></textarea>
+          </div>
+          <div class="form-check">
+            <input id="productActive" type="checkbox" class="form-check-input" checked>
+            <label class="form-check-label" for="productActive">Active</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" onclick="saveProduct()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/inventory.js') }}"></script>
+{% endblock %}

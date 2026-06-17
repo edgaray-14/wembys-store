@@ -1,0 +1,325 @@
+:root {
+    --wemby-primary: #DC143C;
+    --wemby-secondary: #FFD700;
+    --wemby-dark: #1a1a1a;
+    --wemby-light: #f8f9fa;
+    --wemby-accent: #00a86b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    color: #333;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
+      url("../images/supermarket-bg.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Header Styling */
+.wemby-header {
+    background: linear-gradient(135deg, var(--wemby-primary) 0%, #b30000 100%);
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.brand i {
+    font-size: 2rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.wemby-nav {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link:hover {
+    background-color: var(--wemby-secondary);
+    color: var(--wemby-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Contact */
+.header-contact {
+    display: flex;
+    align-items: center;
+}
+
+.contact-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.contact-link:hover {
+    background-color: var(--wemby-secondary);
+    color: var(--wemby-dark);
+    transform: scale(1.05);
+}
+
+/* Main Content */
+.wemby-main {
+    flex: 1;
+    padding: 2rem;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(220, 20, 60, 0.05) 35px,
+            rgba(220, 20, 60, 0.05) 70px
+        ),
+        linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+}
+
+.wemby-main h1 {
+    color: var(--wemby-primary);
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.wemby-main h2 {
+    color: var(--wemby-accent);
+    font-weight: 600;
+}
+
+/* Footer */
+.wemby-footer {
+    background: linear-gradient(135deg, var(--wemby-dark) 0%, #333 100%);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    font-weight: 500;
+    border-top: 3px solid var(--wemby-primary);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.wemby-footer p {
+    margin: 0;
+}
+
+.wemby-footer i {
+    color: var(--wemby-secondary);
+    margin-right: 0.5rem;
+}
+
+.footer-email {
+    color: var(--wemby-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-email:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: var(--wemby-primary);
+    border-color: var(--wemby-primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #b30000;
+    border-color: #b30000;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(220, 20, 60, 0.4);
+}
+
+.btn-secondary {
+    background-color: var(--wemby-accent);
+    border-color: var(--wemby-accent);
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background-color: #008c56;
+    border-color: #008c56;
+}
+
+/* Table Styling */
+.table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+    background: linear-gradient(135deg, var(--wemby-primary) 0%, #b30000 100%);
+    color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(220, 20, 60, 0.03);
+}
+
+.table tbody tr:hover {
+    background-color: rgba(220, 20, 60, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+/* Form Styling */
+.form-control, .form-select {
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--wemby-primary);
+    box-shadow: 0 0 0 0.2rem rgba(220, 20, 60, 0.25);
+}
+
+/* Modal Styling */
+.modal-header {
+    background: linear-gradient(135deg, var(--wemby-primary) 0%, #b30000 100%);
+    color: white;
+}
+
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+/* Alert Styling */
+.alert-danger {
+    background-color: rgba(220, 20, 60, 0.1);
+    border: 2px solid var(--wemby-primary);
+    color: var(--wemby-dark);
+}
+
+.alert-success {
+    background-color: rgba(0, 168, 107, 0.1);
+    border: 2px solid var(--wemby-accent);
+    color: var(--wemby-dark);
+}
+
+.alert-warning {
+    background-color: rgba(255, 215, 0, 0.1);
+    border: 2px solid var(--wemby-secondary);
+    color: var(--wemby-dark);
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(220, 20, 60, 0.2);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--wemby-primary) 0%, #b30000 100%);
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .wemby-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .brand {
+        font-size: 1.5rem;
+    }
+
+    .wemby-nav {
+        gap: 0.5rem;
+        order: 3;
+        width: 100%;
+    }
+
+    .header-contact {
+        order: 2;
+    }
+
+    .nav-link {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    .contact-link {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.7rem;
+    }
+
+    .wemby-main {
+        padding: 1rem;
+    }
+
+    .table {
+        font-size: 0.85rem;
+    }
+
+    .footer-content {
+        font-size: 0.9rem;
+    }
+}
